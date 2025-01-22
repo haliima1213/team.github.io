@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Purchase</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f7;
+    }
+
+    h2 {
+      text-align: center;
+      color: #34495e;
+      margin: 20px 0;
+    }
+
+    #purchaseForm {
+      max-width: 500px;
+      margin: 30px auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+      color: #333;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #3498db;
+      outline: none;
+      box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #1abc9c;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #16a085;
+    }
+
+    @media (max-width: 600px) {
+      #purchaseForm {
+        padding: 15px;
+      }
+
+      input, textarea {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Product Purchase</h2>
+
+  <div id="purchaseForm">
+    <h3 style="color: #2c3e50; text-align: center;">Enter Your Details</h3>
+    <form id="purchaseFormDetails">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telephone">Telephone:</label>
+      <input type="tel" id="telephone" name="telephone" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">BUY NOW</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("purchaseFormDetails").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent the form from reloading the page
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const telephone = document.getElementById("telephone").value;
+      const message = document.getElementById("message").value;
+
+      const whatsappNumber = "252617091831"; // Replace with your WhatsApp number
+      const whatsappMessage = `Hello, I am ${name}. My email is ${email}, and my phone number is ${telephone}. Message: ${message}`;
+      const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+
+      window.open(whatsappURL, "_blank");
+      alert("Your message has been sent to WhatsApp!");
+    });
+  </script>
+
+</body>
+</html>
+
